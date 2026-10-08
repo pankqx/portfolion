@@ -15,7 +15,15 @@ import './portfolio.css'
 
 export default function Portfolio() {
   useEffect(() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    // Rhea can send visitors to a section from the rooftop
+    let goto: string | null = null
+    try { goto = sessionStorage.getItem('pf.goto') } catch { /* ignore */ }
+    let timer = 0
+    const jump = (smooth: (el: HTMLElement) => void) => {
+      const el = goto ? (document.querySelector(goto) as HTMLElement | null) : null
+      if (el) timer = window.setTimeout(() => { try { sessionStorage.removeItem('pf.goto') } catch { /* ignore */ } smooth(el) }, 700)
+    }
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { jump((el) => el.scrollIntoView()); return }
     const lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 0.95 })
     let raf = 0
     const tick = (t: number) => { lenis.raf(t); raf = requestAnimationFrame(tick) }
@@ -29,7 +37,8 @@ export default function Portfolio() {
       if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -60 }) }
     }
     document.addEventListener('click', onAnchor)
-    return () => { cancelAnimationFrame(raf); lenis.destroy(); document.removeEventListener('click', onAnchor) }
+    jump((el) => lenis.scrollTo(el, { offset: -60, duration: 1.6 }))
+    return () => { clearTimeout(timer); cancelAnimationFrame(raf); lenis.destroy(); document.removeEventListener('click', onAnchor) }
   }, [])
 
   return (

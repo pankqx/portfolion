@@ -68,7 +68,8 @@ export default function Rooftop() {
       if (voiceOn) await speaker.speak(r.text)
       else await speaker.mime(r.text)
       if (r.go) {
-        setTimeout(() => { location.hash = '' ; setTimeout(() => document.querySelector(r.go!)?.scrollIntoView({ behavior: 'smooth' }), 650) }, 1400)
+        try { sessionStorage.setItem('pf.goto', r.go) } catch { /* ignore */ }
+        setTimeout(() => { location.hash = '' }, 900)
       }
     },
     [commit, speaker, voiceOn],
