@@ -1,0 +1,131 @@
+:root {
+  --night: #0c1030;
+  --deep: #070a1f;
+  --ink-2: #151a44;
+  --paper: #efe7d6;
+  --paper-dim: #b9b3c9;
+  --muted: #7f84ad;
+  --amber: #ffb347;
+  --amber-soft: #ffb34733;
+  --rose: #f2a5c0;
+  --violet: #8c7cf0;
+  --line: #2a3066;
+
+  --f-display: 'Gloock', 'Times New Roman', serif;
+  --f-text: 'Familjen Grotesk', system-ui, sans-serif;
+  --f-mono: 'Spline Sans Mono', ui-monospace, monospace;
+
+  /* type scale — 1.333 perfect fourth */
+  --t-0: 0.8125rem;
+  --t-1: 1rem;
+  --t-2: 1.333rem;
+  --t-3: 1.777rem;
+  --t-4: 2.369rem;
+  --t-5: 3.157rem;
+  --t-6: clamp(3.4rem, 9vw, 8.4rem);
+
+  --gutter: clamp(16px, 4vw, 56px);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--paper);
+  font-family: var(--f-text);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* film grain over everything — a fixed SVG noise layer */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: -50%;
+  z-index: 90;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
