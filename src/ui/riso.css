@@ -1,0 +1,19 @@
+.riso {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.riso-layer {
+  display: block;
+  mix-blend-mode: multiply;
+}
+.riso-top {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.riso-pink { color: var(--pink); }
+.riso-blue { color: var(--blue); }
+.riso-yellow { color: var(--yellow); }
+.riso-ink { color: var(--ink); }
