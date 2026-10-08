@@ -518,3 +518,12 @@ html[data-route='rhea'] body {
   background: radial-gradient(ellipse at 0% 100%, rgba(11, 9, 48, 0.92) 0%, rgba(11, 9, 48, 0.6) 40%, transparent 70%);
 }
 .roof-mood { margin-left: 6px; }
+@media (max-width: 520px) {
+  .roof-mood,
+  .chip-name {
+    display: none;
+  }
+  .log p.log-rhea:last-child {
+    display: none;
+  }
+}

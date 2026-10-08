@@ -1398,3 +1398,9 @@
   text-underline-offset: 0.08em;
   text-decoration-skip-ink: none;
 }
+@media (max-width: 900px) {
+  .ll-year {
+    font-size: 30px;
+    -webkit-text-stroke-width: 1px;
+  }
+}

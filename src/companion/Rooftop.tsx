@@ -196,10 +196,11 @@ export default function Rooftop() {
         <div className="roof-tools">
           <button className="chip" onClick={() => setCard((v) => !v)} aria-expanded={card}>
             <span className="hearts" aria-label={`Closeness ${hearts} of 5`}>{'♥'.repeat(hearts)}<span className="dim">{'♡'.repeat(5 - hearts)}</span></span>
-            {profile.name ? profile.name : 'Stranger'}
+            <span className="chip-name">{profile.name ? profile.name : 'Stranger'}</span>
           </button>
           <button className="chip" onClick={() => { setVoiceOn((v) => !v); speaker.stop() }} aria-pressed={voiceOn}>
-            {voiceOn ? 'Voice on' : 'Voice off'}
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />{voiceOn ? <path d="M16 8a5 5 0 0 1 0 8M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /> : <path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />}</svg>
+            <span className="chip-name">{voiceOn ? 'Voice on' : 'Voice off'}</span>
           </button>
         </div>
       </header>
