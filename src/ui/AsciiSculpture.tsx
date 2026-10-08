@@ -70,7 +70,7 @@ export default function AsciiSculpture({ className, cell = 11, shape = 0, onShap
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
     let W = 0, H = 0, cols = 0, rows = 0, raf = 0, visible = true, t0 = performance.now()
     const dpr = Math.min(devicePixelRatio || 1, 2)
-    const cw = cell * 0.62, ch = cell
+    const cw = cell * 0.78, ch = cell * 1.05
 
     const resize = () => {
       const r = el.getBoundingClientRect()
@@ -121,7 +121,7 @@ export default function AsciiSculpture({ className, cell = 11, shape = 0, onShap
       ga.fillStyle = ink.a; gb.fillStyle = ink.b
       const aspect = (cols * cw) / (rows * ch)
       const light = [0.55, 0.65, -0.52] as V3
-      const fov = aspect < 1 ? 0.9 / aspect : 0.9
+      const fov = aspect < 1 ? 0.78 / aspect : 0.66
       for (let j = 0; j < rows; j++) {
         const v = (0.5 - j / rows) * fov
         for (let i = 0; i < cols; i++) {
@@ -169,7 +169,7 @@ export default function AsciiSculpture({ className, cell = 11, shape = 0, onShap
     <div
       ref={wrap}
       className={className}
-      style={{ position: 'relative', cursor: onShape ? 'pointer' : undefined }}
+      style={{ position: className ? undefined : 'relative', cursor: onShape ? 'pointer' : undefined }}
       onClick={() => onShape?.((state.current.shape + 1) % shapes.length)}
       role={onShape ? 'button' : 'img'}
       aria-label={onShape ? `ASCII sculpture: ${SHAPE_NAMES[shape]}. Click to change shape.` : 'ASCII sculpture'}

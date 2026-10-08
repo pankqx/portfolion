@@ -52,7 +52,7 @@ export default function Hero() {
 
       <div className="hero-sculpt">
         <div className="hero-sun halftone-pink" aria-hidden />
-        <AsciiSculpture className="hero-ascii" shape={shape} onShape={setShape} cell={11} />
+        <AsciiSculpture className="hero-ascii" shape={shape} onShape={setShape} cell={12} />
         <p className="hero-caption mono">
           Specimen {shape + 1}/4, {SHAPE_NAMES[shape]}. Click to swap.
         </p>
