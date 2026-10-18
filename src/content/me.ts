@@ -22,7 +22,7 @@ export const me = {
   ],
   socials: [
     { label: 'GitHub', handle: '@yourhandle', href: 'https://github.com/' },
-    { label: 'LinkedIn', handle: 'in/yourname', href: 'https://linkedin.com/' },
+    { label: 'LinkedIn', handle: 'in/pankqx', href: 'https://www.linkedin.com/in/pankqx' },
     { label: 'Instagram', handle: '@yourhandle', href: 'https://instagram.com/' },
     { label: 'X', handle: '@yourhandle', href: 'https://x.com/' },
     { label: 'Read.cv', handle: 'yourname', href: 'https://read.cv/' },
